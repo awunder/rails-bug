@@ -1,0 +1,91 @@
+<%= form_for @domain do |domain| %>
+    <%= render 'layouts/error_messages', object: @domain %>
+    <div class="row">
+      <div class="small-12 column">
+        <div class="input-group">
+          <span class="input-group-label domain"><%= t('defaults.misc.name') %></span>
+          <%= domain.text_field :name, class: 'input-group-field' %>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="small-12 columns">
+        <h4 class="domain-headline text-center"><%= t('domains.edit_form.af_table_headline') %></h4>
+        <table class="hover unstriped" id="actionfields">
+          <thead>
+          <tr>
+            <th class="text-center"><%= t('action_fields.headers.name') %></th>
+            <th class="text-center"><%= t('action_fields.headers.weight') %></th>
+            <th class="text-center" width="95px"><%= t('action_fields.headers.status') %></th>
+            <th class="text-center" width="95px"><%= t('action_fields.headers.solution') %></th>
+            <th class="text-center" width="95px"><%= t('action_fields.headers.skills') %></th>
+            <th class="text-center" width="95px"><%= t('action_fields.headers.organization') %></th>
+            <th class="text-center" width="45px"></th>
+          </tr>
+          </thead>
+          <tbody>
+            <%= domain.fields_for :action_fields do |actionfield| %>
+              <%= render 'domains/action_fields', f: actionfield %>
+            <% end %>
+          </tbody>
+         </table>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="small-12">
+      <h4 class="text-center"><%= t('domains.edit_form.domain_achievements') %></h4>
+      <table class="hover draggable" id="domain_achievements">
+        <thead>
+        <tr>
+          <th class="text-center" width="50"></th>
+          <th class="text-center"><%= t('domains.show.actionfield') %></th>
+          <th class="text-center" width="30%"><%= t('domains.show.actionfield') %></th>
+          <th class="text-center"><%= t('action_fields.headers.additional_info') %></th>
+          <th class="text-center" width="100"><%= t('defaults.misc.visible') %></th>
+          <th class="text-center" width="50"></th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <%= domain.fields_for :achievements, @achievements do |f| %>
+            <%= render 'domains/achievements', f: f %>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+
+    <hr>
+
+    <div class="small-12">
+      <h4 class="text-center"><%= t('domains.edit_form.domain_actions') %></h4>
+      <table class="hover draggable" id="domain_actions">
+        <thead>
+        <tr>
+          <th class="text-center" width="50"></th>
+          <th class="text-center"><%= t('domains.show.actionfield') %></th>
+          <th class="text-center" width="30%"><%= t('action_fields.headers.actions') %></th>
+          <th class="text-center"><%= t('action_fields.headers.additional_info') %></th>
+          <th class="text-center" width="100"><%= t('defaults.misc.visible') %></th>
+          <th class="text-center" width="50"></th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <%= domain.fields_for :actions, @actions do |f| %>
+            <%= render 'domains/actions', f: f %>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+    <hr>
+    <% if @domain.new_record? %>
+      <%= submit_tag 'create', class: 'button expanded domain' %>
+    <% else %>
+      <%= submit_tag 'update', class: 'button expanded domain' %>
+    <% end %>
+
+<% end %>

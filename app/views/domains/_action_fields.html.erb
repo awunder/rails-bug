@@ -1,0 +1,15 @@
+<tr class="text-center">
+  <td><%= f.text_field :name, class: "#{dom_id(f.object)}" %></td>
+  <td class="quantity text-center" content="weight" width="90px"><%= f.number_field :domain_weight, min: 0, step: 0.1, id: "#{dom_id(f.object)}_domain_weight" %></td>
+  <td content="score" id="<%= dom_id(f.object) %>"></td>
+  <td content="solution" id="<%= dom_id(f.object) %>"><%= f.object.solution %></td>
+  <td content="skills" id="<%= dom_id(f.object) %>"><%= f.object.skills %></td>
+  <td content="organization" id="<%= dom_id(f.object) %>">
+    <%= f.object.organization %>
+
+  </td>
+  <td class="no-padding">
+    <%= f.hidden_field :_destroy %>
+    <i class="fa fa-trash-o remove_row" aria-hidden="true"></i>
+  </td>
+</tr>

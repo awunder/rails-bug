@@ -1,0 +1,13 @@
+<tr>
+  <td>
+    <%= f.hidden_field :_destroy %>
+    <i class="fa fa-trash-o remove_row" aria-hidden="true"></i>
+  </td>
+  <td><%= f.text_field :name %></td>
+  <td><%= f.text_field :additional_info %></td>
+  <td class="auto-width"><%= f.quarter_date_select :due_date, { include_blank: true, default: nil }, class: 'quarter-select' %></td>
+  <td class="text-center draggable">
+    <i class="fa fa-arrows" aria-hidden="true"></i>
+    <%= f.hidden_field :action_field_rank, class: 'action_field_rank' %>
+  </td>
+</tr>

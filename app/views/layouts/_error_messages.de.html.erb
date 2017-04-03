@@ -1,0 +1,24 @@
+<% if object.errors.any? %>
+    <div class="row align-center">
+      <div class="columns shrink">
+        <div class="callout alert">
+          <section id="errors">
+            <header>
+              <h4>
+                Uuups! Ihr Formular konnte nicht gespeichert werden.
+              </h4>
+              <h5>
+                Bitte korrigieren Sie folgende <%= object.errors.size %> Fehler:
+              </h5>
+            </header>
+            <ul>
+              <% object.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+              <% end %>
+            </ul>
+          </section>
+        </div>
+      </div>
+      </div>
+
+<% end %>

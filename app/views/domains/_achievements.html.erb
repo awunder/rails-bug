@@ -1,0 +1,23 @@
+<tr>
+  <td>
+    <%= f.hidden_field :_destroy %>
+    <i class="fa fa-trash-o remove_row" aria-hidden="true"></i>
+  </td>
+  <td><%= achievement_parent_name_or_suggested(f.object) if f.object.persisted? %></td>
+  <td><%= f.text_field :name %></td>
+  <td><%= f.text_field :additional_info %></td>
+  <td>
+    <div class="small switch text-center">
+      <%= f.check_box :visible, id: dom_id(f.object), class: 'switch-input' %>
+      <label class="switch-paddle" for="<%= dom_id(f.object) %>">
+        <span class="show-for-sr"><%= t('domains.edit_form.achievement_screenreader') %></span>
+        <span class="switch-active" aria-hidden="true"><%= t('defaults.misc.y') %></span>
+        <span class="switch-inactive" aria-hidden="true"><%= t('defaults.misc.n') %></span>
+      </label>
+    </div>
+  </td>
+  <td class="text-center draggable">
+    <i class="fa fa-arrows" aria-hidden="true"></i>
+    <%= f.hidden_field :domain_rank, class: 'domain_rank' %>
+  </td>
+</tr>

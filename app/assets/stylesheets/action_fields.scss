@@ -1,0 +1,57 @@
+@import 'foundation_and_overrides';
+
+#solution, #skills, #organization
+{
+  .selectable {
+    cursor: pointer;
+    cursor: hand;
+  }
+  .selected {
+    background-color: $primary-color;
+  }
+  .selected:before {
+    display: inline-block;
+    font-family: "foundation-icons";
+    font-size: 22px;
+    content: "\f126";
+    color: $white;
+  }
+}
+
+div#status, div[id^="chart-"], div#domain-status {
+  margin:0 auto;
+}
+
+div#status, div#domain-status {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.action_field_status_value, .domain_status_value {
+  font-size: 3rem;
+  font-weight: 700;
+}
+
+#actionfields, #achievements, #actions {
+  input, select {
+    margin-bottom: 0;
+  }
+  .add_row {
+    margin: 0.25rem;
+  }
+  tbody {
+    td {
+      padding: 0.5rem;
+    }
+  }
+}
+
+#action_field {
+  .input-group-label {
+    padding: 0.4rem 0.5rem;
+  }
+  .input-group-field {
+    padding: 0.4rem 0.5rem;
+    border: 1px solid #dadada;
+  }
+}

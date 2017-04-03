@@ -1,0 +1,33 @@
+@import 'foundation_and_overrides';
+
+#domain {
+  select, input, .switch {
+    margin-bottom: 0;
+  }
+  .add_row {
+    margin: 0.25rem;
+  }
+  .input-group-label {
+    padding: 0.4rem 0.5rem;
+  }
+  .input-group-field {
+    padding: 0.4rem 0.5rem;
+    border: 1px solid #dadada;
+  }
+  .card-section {
+    color: $white;
+    background-color: $primary-color;
+    font-size: 1.25rem;
+  }
+  #domain_actions, #domain_achievements {
+    tbody {
+      td {
+        padding: 0.5rem;
+      }
+    }
+    a.propose {
+      float: right;
+      margin: 0.25rem;
+    }
+  }
+}

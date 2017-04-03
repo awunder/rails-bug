@@ -1,0 +1,139 @@
+<% provide(:title, t('domains.title_show', name: @domain.name)) %>
+
+<div class="row align-center" id="domain">
+  <div class="small-12 large-10 column">
+    <div class="edit-link">
+      <%= link_to edit_domain_path(@domain), class: 'button' do %>
+          <i class="fa fa-pencil" aria-hidden="true"></i> <%= t('defaults.buttons.edit') %>
+      <% end %>
+    </div>
+
+
+
+    <div class="row">
+      <div class="small-12 column">
+        <div class="input-group">
+          <span class="input-group-label domain"><%= t('defaults.misc.name') %></span>
+          <span class="input-group-field"><%= @domain.name %></span>
+        </div>
+      </div>
+    </div>
+
+    <hr>
+
+
+      <div class="small-12 medium-4 medium-offset-2 columns">
+        <h4 class="domain-headline"><%= t('domains.show.actionfields') %></h4>
+        <div class="domain foa-list">
+          <%= render @action_fields %>
+        </div>
+      </div>
+    </div>
+
+
+    <hr>
+
+
+    <div class="small-12">
+      <h4 class="text-center domain-headline"><%= t('domains.show.domain_achievements') %></h4>
+
+      <table class="hover" id="domain_achievements">
+        <thead>
+        <tr>
+          <th class="text-center" width="25%"><%= t('domains.show.actionfield') %></th>
+          <th class="text-center"><%= t('domains.show.domain_achievement') %></th>
+          <th class="text-center"><%= t('domains.show.additional_info') %></th>
+          <th class="text-center"><%= t('domains.show.media') %></th>
+          <th class="text-center" width="100"><%= t('domains.show.likes') %></th>
+        </tr>
+        </thead>
+        <tbody id="achievements">
+          <%= render partial: 'domain_achievement', collection: @achievements, as: :achievement %>
+        </tbody>
+        <tfoot>
+        <tr>
+          <th colspan="5">
+            <a class="button propose" data-open="create-visitor-achievement"><%= t('.propose_achievement') %></a>
+          </th>
+        </tr>
+        </tfoot>
+      </table>
+    </div>
+
+
+    <hr>
+
+
+    <div class="small-12">
+      <h4 class="text-center domain-headline"><%= t('domains.show.domain_actions') %></h4>
+      <table class="hover" id="domain_actions">
+        <thead>
+        <tr>
+          <th class="text-center" width="25%"><%= t('domains.show.actionfield') %></th>
+          <th class="text-center"><%= t('domains.show.domain_action') %></th>
+          <th class="text-center"><%= t('domains.show.additional_info') %></th>
+          <th class="text-center" width="100"><%= t('domains.show.likes') %></th>
+        </tr>
+        </thead>
+        <tbody id="actions">
+          <%= render partial: 'domain_action', collection: @actions, as: :action  %>
+        </tbody>
+        <tfoot>
+        <tr>
+          <th colspan="5">
+            <a class="button propose" data-open="create-visitor-action"><%= t('domains.show.propose_action') %></a>
+          </th>
+        </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="reveal" id="create-visitor-achievement" data-reveal>
+  <button class="close-button" data-close aria-label="Close modal" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <div class="card">
+    <div class="card-divider">
+      <h4><%= t('.modal.achievement_header') %></h4>
+    </div>
+    <div class="card-section">
+      <%= form_for([@domain, @domain.achievements.new], as: :act, remote: true, data: {abide: ''}) do |achievement| %>
+          <div class="input-group">
+            <span class="input-group-label domain modal-labels"><%= t('defaults.misc.name') %></span>
+            <%= achievement.text_field :name, placeholder: t('defaults.placeholders.enter_name'), class: 'input-group-field', required: true %>
+          </div>
+          <div class="input-group">
+            <span class="input-group-label domain modal-labels"><%= t('defaults.misc.add_info') %></span>
+            <%= achievement.text_field :additional_info, placeholder: t('defaults.placeholders.optional'), class: 'input-group-field' %>
+          </div>
+          <%= achievement.submit t('defaults.buttons.create'), class: 'button expanded' %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="reveal" id="create-visitor-action" data-reveal>
+  <button class="close-button" data-close aria-label="Close modal" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <div class="card">
+    <div class="card-divider">
+      <h4><%= t('.modal.action_header') %></h4>
+    </div>
+    <div class="card-section">
+      <%= form_for([@domain, @domain.actions.new], as: :act, remote: true, data: {abide: ''}) do |act| %>
+          <div class="input-group">
+            <span class="input-group-label domain modal-labels"><%= t('defaults.misc.name') %></span>
+            <%= act.text_field :name, placeholder: t('defaults.placeholders.enter_name'), class: 'input-group-field', required: true %>
+          </div>
+          <div class="input-group">
+            <span class="input-group-label domain modal-labels"><%= t('defaults.misc.add_info') %></span>
+            <%= act.text_field :additional_info, placeholder: t('defaults.placeholders.optional'), class: 'input-group-field' %>
+          </div>
+          <%= act.submit t('defaults.buttons.create'), class: 'button expanded' %>
+      <% end %>
+    </div>
+  </div>
+</div>

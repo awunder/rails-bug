@@ -1,0 +1,73 @@
+<% provide(:title, t('action_fields.title_show', name: @actionfield.name)) %>
+
+<div class="row align-center" id="action_field">
+  <div class="column small-12 large-10">
+
+
+
+    <div class="row">
+      <div class="small-12 column">
+        <div class="input-group">
+          <span class="input-group-label"><%= t('domains.misc.type') %></span>
+          <span class="input-group-field line-height"><%= link_to_parent(@actionfield) %></span>
+        </div>
+      </div>
+      <div class="small-12 column">
+        <div class="input-group">
+          <span class="input-group-label"><%= t('defaults.misc.name') %></span>
+          <span class="input-group-field line-height"><%= @actionfield.name %></span>
+        </div>
+      </div>
+    </div>
+
+
+    <hr>
+
+
+    <hr>
+
+    <div class="small-12">
+      <h4 class="text-center"><%= t('action_fields.headers.achievements_headline') %></h4>
+      <table class="hover" id="achievements">
+        <thead>
+        <tr>
+          <th class="text-center"><%= t('action_fields.headers.achievement_headline') %></th>
+          <th class="text-center"><%= t('action_fields.headers.additional_info') %></th>
+          <th class="text-center"><%= t('action_fields.headers.media') %></th>
+          <th class="text-center"><%= t('action_fields.headers.ready') %></th>
+          <th class="text-center"><%= t('action_fields.headers.rollout') %></th>
+          <th class="text-center"><%= t('action_fields.headers.likes') %></th>
+        </tr>
+        </thead>
+        <tbody class="achievements">
+          <%= render @achievements %>
+        </tbody>
+      </table>
+
+    </div>
+
+    <hr>
+
+    <div class="small-12 ">
+      <h4 class="text-center"><%= t('action_fields.headers.actions_headline') %></h4>
+
+      <table class="hover" id="actions">
+        <thead>
+        <tr>
+          <th class="text-center"><%= t('action_fields.headers.action_headline') %></th>
+          <th class="text-center"><%= t('action_fields.headers.additional_info') %></th>
+          <th class="text-center auto-width"><%= t('action_fields.headers.due_date') %></th>
+          <th class="text-center"><%= t('action_fields.headers.likes') %></th>
+        </tr>
+        </thead>
+        <tbody>
+        <%= render @actions %>
+        </tbody>
+      </table>
+
+
+    </div>
+
+
+  </div>
+</div>

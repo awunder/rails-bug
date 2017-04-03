@@ -1,0 +1,14 @@
+<div class="row align-center">
+  <div class="small-12 medium-10 large-8 float-center flash-messages">
+    <% flash.each do |name, msg| %>
+        <% if msg.is_a?(String) %>
+            <div data-alert class=" callout <%= flash2callout(name) %> margin-bottom" data-closable>
+              <%= content_tag :div, msg %>
+              <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+        <% end %>
+    <% end %>
+  </div>
+</div>

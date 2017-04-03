@@ -1,0 +1,6 @@
+$('#create-visitor-achievement').foundation('toggle');
+$('#achievements').append("<%= j (render 'domains/domain_achievement', achievement: @achievement, added: ' id=new_achievement') %>");
+$('#new_achievement').effect("highlight", {color: '#007A93'}, 3000).removeAttr('id');
+var msg = "Achievement created.";
+var container = jQuery(BestInPlaceEditor.defaults.purrSuccessContainer).html(msg);
+container.purr();

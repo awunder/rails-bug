@@ -1,0 +1,19 @@
+<% provide(:title, t('domains.title_new')) %>
+
+
+<div class="row align-center">
+  <div class=" column small-12 medium-10">
+    <div class="edit-link">
+      <%= link_to 'javascript:history.go(-1);', class: 'button' do %>
+          <i class="fa fa-backward" aria-hidden="true"></i> <%= t('defaults.buttons.back') %>
+      <% end %>
+    </div>
+
+  </div>
+</div>
+
+<div class="row align-center">
+  <div class="small-12 large-10 column" id="domain">
+    <%= render 'domains/form' %>
+  </div>
+</div>

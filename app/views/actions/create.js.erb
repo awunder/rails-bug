@@ -1,0 +1,6 @@
+$('#create-visitor-action').foundation('toggle');
+$('#actions').append("<%= j (render 'domains/domain_action', action: @action, added: ' id=new_action') %>");
+$('#new_action').effect("highlight", {color: '#007A93'}, 3000).removeAttr('id');
+var msg = "Action created.";
+var container = jQuery(BestInPlaceEditor.defaults.purrSuccessContainer).html(msg);
+container.purr();

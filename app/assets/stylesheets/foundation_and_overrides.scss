@@ -1,0 +1,356 @@
+@charset 'utf-8';
+
+@import 'settings';
+@import 'foundation';
+
+// If you'd like to include motion-ui the foundation-rails gem comes prepackaged with it, uncomment the 3 @imports, if you are not using the gem you need to install the motion-ui sass package.
+//
+// @import 'motion-ui/motion-ui';
+
+// We include everything by default.  To slim your CSS, remove components you don't use.
+
+@include foundation-global-styles;
+@include foundation-typography;
+@include foundation-button;
+@include foundation-forms;
+@include foundation-visibility-classes;
+@include foundation-float-classes;
+@include foundation-accordion;
+@include foundation-accordion-menu;
+@include foundation-badge;
+@include foundation-breadcrumbs;
+@include foundation-button-group;
+@include foundation-callout;
+@include foundation-card;
+@include foundation-close-button;
+@include foundation-drilldown-menu;
+@include foundation-dropdown;
+@include foundation-dropdown-menu;
+@include foundation-responsive-embed;
+@include foundation-label;
+@include foundation-media-object;
+@include foundation-menu;
+@include foundation-menu-icon;
+@include foundation-off-canvas;
+@include foundation-orbit;
+@include foundation-pagination;
+@include foundation-progress-bar;
+@include foundation-slider;
+@include foundation-sticky;
+@include foundation-reveal;
+@include foundation-switch;
+@include foundation-table;
+@include foundation-tabs;
+@include foundation-thumbnail;
+@include foundation-title-bar;
+@include foundation-tooltip;
+@include foundation-top-bar;
+
+// If you'd like to include motion-ui the foundation-rails gem comes prepackaged with it, uncomment the 3 @imports, if you are not using the gem you need to install the motion-ui sass package.
+//
+// @include motion-ui-transitions;
+// @include motion-ui-animations;
+
+
+//@include foundation-grid;
+@include foundation-flex-classes;
+@include foundation-flex-grid;
+
+
+
+.title-bar, .top-bar {
+  width: 100%;
+
+  a {
+    color: $white;
+    font-size: 90%;
+    line-height: 28px;
+
+    &:hover {
+      color: $light-gray;
+      border-bottom-color: $light-gray;
+      transition: color 0.25s ease-out, border-bottom-color 0.25s ease-out;
+    }
+  }
+  .is-dropdown-submenu-item a {
+    color: $primary-color;
+  }
+  .brand {
+    font-size: 1.5rem;
+    font-weight: 500;
+    letter-spacing: 3px;
+    line-height: 28px;
+  }
+
+  .help-link {
+    font-size: 1.5rem;
+    margin-right: 1rem;
+    margin-left: 1rem;
+  }
+}
+
+.input-group-label {
+  min-width: 50px;
+}
+
+.flash-messages {
+  margin-top: 1rem;
+}
+
+.field_with_errors {
+  width: 100%;
+}
+
+.tabs-title {
+  a {
+    font-size: 1rem;
+  }
+}
+
+.breadcrumbs {
+  margin: 1rem 0 1rem 0;
+}
+
+.sidemenu {
+  margin-top: 2rem;
+  li {
+    a {
+      font-size: 1.2rem;
+      padding-left: 1.5rem;
+      i {
+        min-width: 1rem;
+        margin-right: 0.5rem;
+      }
+    }
+  }
+}
+
+#landing {
+  height: 100vh;
+  background: image-url('oilpump.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  .top-bar, .menu, .button {
+    background-color: transparent;
+  }
+
+  .home {
+    color: $white;
+
+    .middle {
+      margin-top: 10%;
+    }
+
+    h1, p {
+      letter-spacing: 2px;
+      a {
+        color: $white;
+        font-weight: 700;
+        border-bottom: 1px dotted $white;
+      }
+    }
+  }
+}
+
+.best_in_place {
+  cursor: hand;
+  cursor: pointer;
+  display: inline-block;
+  border-bottom: 1px dashed $primary-color;
+  input, select {
+    margin-bottom: 0;
+  }
+}
+.best_in_place:hover {
+  background-color: $light-gray;
+}
+
+.bip-flash-error {
+  position: fixed;
+  top: 30px;
+  right: 100px;
+  padding: 20px;
+  border: 1px solid rgba(10, 10, 10, 0.25);
+  background-color: #f7e4e1;
+  color: #004355;
+  &:first-letter { text-transform: uppercase; }
+}
+
+.bip-flash-success {
+  position: fixed;
+  top: 30px;
+  right: 100px;
+  padding: 20px;
+  border: 1px solid rgba(10, 10, 10, 0.25);
+  background-color: #e1faea;
+  color: #0a0a0a;
+  &:first-letter { text-transform: uppercase; }
+}
+
+div.dataTables_length select {
+  width: 90px !important;
+  margin-bottom: 0;
+}
+
+ul.ui-autocomplete {
+  position: absolute;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border: solid 1px #999;
+  cursor: hand;
+  cursor: pointer;
+  li {
+    background-color: $body-background;
+    border-top: solid 1px #DDD;
+    margin: 0;
+    padding: 0;
+
+    div {
+      padding: 0.25rem 1rem;
+    }
+      .ui-state-active,
+      .ui-widget-content .ui-state-active,
+      .ui-widget-header .ui-state-active,
+      a.ui-button:active,
+      .ui-button:active,
+      .ui-button.ui-state-active:hover,
+      .ui-menu-item:active,
+      .ui-menu-item:hover {
+        background-color: $medium-gray;
+
+     }
+  }
+
+  li:hover {
+    background-color: $medium-gray;
+  }
+}
+
+.ui-helper-hidden-accessible {
+  display: none;
+}
+
+table.padding {
+  tr {
+    height: 2.5rem;
+  }
+}
+
+.card-divider.status-value {
+  padding: 0;
+}
+
+.quantity {
+  position: relative;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button
+{
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number]
+{
+  -moz-appearance: textfield;
+}
+
+.quantity input {
+  float: left;
+  display: block;
+  padding: 0;
+  margin: 0;
+  padding-left: 0.5rem;
+  border: 1px solid $medium-gray;
+}
+
+
+
+.quantity-nav {
+  float: left;
+  position: relative;
+  height: 38px;
+}
+
+.quantity-button {
+  position: relative;
+  cursor: pointer;
+  border-left: 1px solid $medium-gray;
+  width: 25px;
+  text-align: center;
+  font-size: 15px;
+  line-height: 1.5;
+  -webkit-transform: translateX(-100%);
+  transform: translateX(-100%);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+.quantity-button.quantity-up {
+  position: absolute;
+  height: 50%;
+  top: 0;
+  border-bottom: 1px solid $medium-gray;
+}
+
+.quantity-button.quantity-down {
+  position: absolute;
+  bottom: 0px;
+  height: 50%;
+}
+
+.edit-link {
+  float:right;
+}
+
+.remove_row {
+  background-color: $primary-color;
+  font-size: 12px !important;
+  padding: 0.85em 1em;
+  color: $white;
+  cursor: hand;
+  cursor: pointer;
+}
+
+footer {
+  height: 100px;
+}
+
+.quarter-select {
+  display: inline;
+  width: auto;
+}
+
+td.auto-width, th.auto-width {
+  width: 1px;
+  white-space: nowrap;
+  min-width: 73px;
+}
+
+.text-wrap {
+  word-break: break-all;
+  white-space: normal;
+}
+
+.like-button {
+  margin-bottom: 0;
+}
+
+.hover_grey {
+  background-color: rgba(0, 67, 85, 0.11) !important;
+}
+
+.table-padding {
+  padding: 0.25rem 0.5rem;
+}
+
+.hidden {
+  display: none;
+}

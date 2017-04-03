@@ -1,0 +1,92 @@
+<%= form_for @actionfield do |actionfield| %>
+    <%= render 'layouts/error_messages', object: @actionfield %>
+    <div class="row">
+      <div class="small-12 columns">
+        <div class="input-group">
+          <span class="input-group-label"><%= t('action_fields.headers.domain') %></span>
+          <span class="input-group-field"><%= actionfield.text_field :domain_id,
+                                                                     class: 'input-group-field autocomplete' %></span>
+        </div>
+      </div>
+      <div class="small-12 columns">
+        <div class="input-group">
+          <span class="input-group-label"><%= t('defaults.misc.name') %></span>
+          <%= actionfield.text_field :name, class: 'input-group-field' %>
+        </div>
+      </div>
+    </div>
+    <div class="small-12 margin-bottom">
+      <div class="input-group">
+        <span class="input-group-label"><%= t('action_fields.forms.target') %></span>
+        <%= actionfield.text_area :target, class: 'input-group-field', rows: 3 %>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="small-12">
+      <h4 class="text-center"><%= t('action_fields.headers.achievements_headline') %></h4>
+      <table class="hover draggable" id="achievements">
+        <thead>
+        <tr>
+          <th class="text-center" width="40"></th>
+          <th class="text-center"><%= t('action_fields.headers.achievement_headline') %></th>
+          <th class="text-center"><%= t('action_fields.headers.additional_info') %></th>
+          <th class="text-center"><%= t('action_fields.headers.media') %></th>
+          <th class="text-center"><%= t('action_fields.headers.ready') %></th>
+          <th class="text-center" width="80"><%= t('action_fields.headers.rollout') %></th>
+          <th class="text-center" width="50"></th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody class="achievements">
+        <%= actionfield.fields_for :achievements do |f| %>
+            <%= render 'action_fields/achievements', f: f  %>
+        <% end %>
+        </tbody>
+        <tfoot class="achievements">
+          <tr>
+            <td colspan="7" class="text-right"><%= link_to_add_fields t('domains.buttons.add_achievement'), actionfield, :achievements %></td>
+          </tr>
+        </tfoot>
+      </table>
+
+    </div>
+
+    <hr>
+
+    <div class="small-12 ">
+      <h4 class="text-center"><%= t('action_fields.headers.actions_headline') %></h4>
+
+      <table class="hover draggable" id="actions">
+        <thead>
+        <tr>
+          <th class="text-center" width="40"></th>
+          <th class="text-center"><%= t('action_fields.tables.actions.action') %></th>
+          <th class="text-center"><%= t('action_fields.tables.actions.add_info') %></th>
+          <th class="text-center auto-width"><%= t('action_fields.tables.actions.due_date') %></th>
+        </tr>
+        </thead>
+        <tbody>
+        <%= actionfield.fields_for :actions do |f| %>
+            <%= render 'action_fields/actions', f: f  %>
+        <% end %>
+        </tbody>
+        <tfoot>
+        <tr>
+          <td colspan="5" class="text-right"><%= link_to_add_fields t('domains.buttons.add_action'), actionfield, :actions %></td>
+        </tr>
+        </tfoot>
+      </table>
+
+
+    </div>
+
+    <hr>
+
+    <% if @actionfield.new_record? %>
+        <%= submit_tag 'create', class: 'button expanded' %>
+    <% else %>
+        <%= submit_tag 'update', class: 'button expanded' %>
+    <% end %>
+<% end %>

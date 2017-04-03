@@ -1,0 +1,25 @@
+<% if object.errors.any? %>
+    <div class="row align-center">
+      <div class="columns shrink">
+        <div class="callout alert">
+          <section id="errors">
+            <header>
+              <h4>
+                Oops! Your form could not be saved.
+              </h4>
+              <h5>
+                Please correct the following
+                <%= pluralize(object.errors.size, "error") %>:
+              </h5>
+            </header>
+            <ul>
+              <% object.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+              <% end %>
+            </ul>
+          </section>
+        </div>
+      </div>
+      </div>
+
+<% end %>

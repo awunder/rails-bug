@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <% if content_for?(:head) %>
+        <%= yield(:head) %>
+    <% end %>
+    <title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <%= render 'layouts/off_canvas_menu' %>
+
+    <div class="off-canvas-content" data-off-canvas-content>
+      <%= render 'layouts/header'  %>
+      <%= render 'layouts/flashes' %>
+      <%= yield %>
+      <%= render 'layouts/footer' %>
+    </div>
+  </body>
+  <%= javascript_include_tag 'app-defaults' %>
+</html>
