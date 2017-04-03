@@ -26,11 +26,11 @@
           </tr>
           </thead>
           <tbody>
-            <%= domain.fields_for :action_fields do |actionfield| %>
+          <%= domain.fields_for :action_fields do |actionfield| %>
               <%= render 'domains/action_fields', f: actionfield %>
-            <% end %>
+          <% end %>
           </tbody>
-         </table>
+        </table>
       </div>
     </div>
 
@@ -51,8 +51,18 @@
         </tr>
         </thead>
         <tbody>
-        <%= domain.fields_for :achievements, @achievements do |f| %>
-            <%= render 'domains/achievements', f: f %>
+        <% @achievements.each do |achievement|%>
+            <% if achievement.achievementable_type == "ActionField" %>
+                <%= domain.fields_for :action_fields, achievement.achievementable do |actionfield| %>
+                    <%= actionfield.fields_for :achievements, achievement do |ff| %>
+                        <%= render 'domains/achievements', f:  ff %>
+                    <% end %>
+                <% end %>
+            <% else %>
+                <%= domain.fields_for :achievements, achievement do |f| %>
+                    <%= render 'domains/achievements', f: f %>
+                <% end %>
+            <% end %>
         <% end %>
         </tbody>
       </table>
@@ -75,17 +85,27 @@
         </tr>
         </thead>
         <tbody>
-        <%= domain.fields_for :actions, @actions do |f| %>
-            <%= render 'domains/actions', f: f %>
+        <% @actions.each do |action|%>
+            <% if action.actionable_type == "ActionField" %>
+                <%= domain.fields_for :action_fields, action.actionable do |actionfield| %>
+                    <%= actionfield.fields_for :actions, action do |f| %>
+                        <%= render 'domains/actions', f: f %>
+                    <% end %>
+                <% end %>
+            <% else %>
+                <%= domain.fields_for :actions, action do |f| %>
+                    <%= render 'domains/actions', f: f %>
+                <% end %>
+            <% end %>
         <% end %>
         </tbody>
       </table>
     </div>
     <hr>
     <% if @domain.new_record? %>
-      <%= submit_tag 'create', class: 'button expanded domain' %>
+        <%= submit_tag 'create', class: 'button expanded domain' %>
     <% else %>
-      <%= submit_tag 'update', class: 'button expanded domain' %>
+        <%= submit_tag 'update', class: 'button expanded domain' %>
     <% end %>
 
 <% end %>

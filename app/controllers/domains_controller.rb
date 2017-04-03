@@ -84,7 +84,26 @@ class DomainsController < ApplicationController
                                                            :visible,
                                                            :due_date,
                                                            :_destroy],
-                                   :action_fields_attributes => [:id, :name, :domain_weight, :domain_id, :_destroy])
+                                   :action_fields_attributes => [:id, :name, :domain_weight, :domain_id, :_destroy,
+                                                                 :achievements_attributes => [:id,
+                                                                                              :name,
+                                                                                              :domain_rank,
+                                                                                              :visible,
+                                                                                              :additional_info,
+                                                                                              :media,
+                                                                                              :ready,
+                                                                                              :rollout,
+                                                                                              :domain_id,
+                                                                                              :_destroy],
+                                                                 :actions_attributes => [:id,
+                                                                                         :name,
+                                                                                         :additional_info,
+                                                                                         :domain_id,
+                                                                                         :domain_rank,
+                                                                                         :visible,
+                                                                                         :due_date,
+                                                                                         :_destroy],
+                                   ])
   end
 
   def set_domain
